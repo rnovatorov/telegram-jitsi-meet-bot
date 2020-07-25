@@ -7,6 +7,7 @@ import triogram
 
 BASE_LOCATION = "https://meet.jit.si"
 SLUG_LENGTH = 4
+EMOJIS_FILENAME = "emojis.txt"
 
 
 def configure_logging():
@@ -48,7 +49,7 @@ async def meet_handler(bot, slugs):
 async def main():
     bot = triogram.make_bot()
     configure_logging()
-    slugs = generate_slugs("emojis.txt", SLUG_LENGTH)
+    slugs = generate_slugs(EMOJIS_FILENAME, SLUG_LENGTH)
 
     async with trio.open_nursery() as nursery:
         nursery.start_soon(bot)
