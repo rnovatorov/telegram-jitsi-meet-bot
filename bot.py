@@ -7,7 +7,7 @@ import triogram
 
 BASE_LOCATION = "https://meet.jit.si"
 SLUG_LENGTH = 4
-EMOJIS_FILENAME = "emojis.txt"
+EMOJIS_FILENAME = "emojis.list"
 
 
 def configure_logging():
