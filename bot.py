@@ -34,9 +34,7 @@ def meet_command(update):
         return False
 
 
-async def meet_handler(bot):
-    slugs = generate_slugs("emojis.txt", SLUG_LENGTH)
-
+async def meet_handler(bot, slugs):
     async with bot.sub(meet_command) as updates:
         async for update in updates:
             await bot.api.send_message(
@@ -49,12 +47,12 @@ async def meet_handler(bot):
 
 async def main():
     bot = triogram.make_bot()
-
     configure_logging()
+    slugs = generate_slugs("emojis.txt", SLUG_LENGTH)
 
     async with trio.open_nursery() as nursery:
         nursery.start_soon(bot)
-        nursery.start_soon(meet_handler, bot)
+        nursery.start_soon(meet_handler, bot, slugs)
 
 
 if __name__ == "__main__":
