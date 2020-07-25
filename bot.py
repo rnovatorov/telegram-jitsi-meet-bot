@@ -1,4 +1,3 @@
-import os
 import random
 import logging
 
@@ -49,8 +48,7 @@ async def meet_handler(bot):
 
 
 async def main():
-    token = os.environ["TOKEN"]
-    bot = triogram.make_bot(token)
+    bot = triogram.make_bot()
 
     configure_logging()
 
